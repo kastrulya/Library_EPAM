@@ -1,0 +1,127 @@
+@import url(//fonts.googleapis.com/css?family=Roboto+Condensed);
+
+//colors palette
+$green-color: rgb(69, 179, 158);
+$bg-grey-color: rgb(50, 58, 69);
+$dark-color: rgb(35, 41, 50);
+$grey-title-color: rgb(87, 87, 87);
+$grey-text-color: rgb(110, 116, 124);
+$bg-light-grey-color: rgb(237, 234, 230);
+$white: rgb(255, 255, 255);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background-color: $bg-grey-color;
+  height: 86px;
+}
+
+.header-row {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Logotype */
+.logo {
+  display: inline-block;
+}
+
+.logo a,
+.logo a:visited {
+  font: .8em/86px 'Roboto Condensed', sans-serif;
+  font-weight: 600;
+  color: $white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.logo a span,
+.logo a:visited span {
+  color: $green-color;
+}
+
+/* Navigation */
+nav {
+  display: inline-block;
+  float: right;
+  > .root-nav li {
+    color: $white;
+    display: inline-block;
+    font: 14px/86px Arial, Georgia, sans-serif;
+    text-transform: uppercase;
+    float: left;
+    padding: 0 16px;
+    position: relative;
+    height: 86px;
+    border-top: 5px solid transparent;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    span {
+      position: absolute;
+      width: 5px;
+      height: 6px;
+      top: 30px;
+      left: 50%;
+    }
+  }
+
+  li:hover {
+    background-color: $dark-color;
+    border-top: 5px solid $green-color;
+    .sub-menu,
+    .sub-menu li:hover .sub-sub-menu,
+    .sub-sub-menu:hover {
+      display: block;
+    }
+  }
+
+  .sub-menu:hover {
+    height: auto;
+  }
+
+  .sub-menu,
+  .sub-sub-menu { //hide sub-menu
+    display: none;
+    width: 150%;
+    position: absolute;
+    padding: 8px 9px 8px;
+    background-color: $bg-grey-color;
+    left: 0;
+  }
+
+  .sub-menu li,
+  .sub-sub-menu li {
+    color: $white;
+    float: none;
+    display: block;
+    font: 12px/12px Arial, Georgia, sans-serif;
+    padding: 14px 5px 13px;
+    text-transform: capitalize;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 44px;
+    //line-height: 1em;
+  }
+
+  .sub-menu li:first-child,
+  .sub-menu li:nth-child(2) {
+    border-bottom: $dark-color solid 1px;
+  }
+
+  .sub-menu li:hover {
+    background-color: $green-color;
+  }
+
+  .sub-sub-menu,
+  .sub-sub-menu:hover {
+    position: relative;
+    left: 115%;
+    top: -200%;
+  }
+}
