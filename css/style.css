@@ -34,78 +34,84 @@ header {
   color: #45b39e;
 }
 
+/* Logotype END */
 /* Navigation */
 nav {
   display: inline-block;
   float: right;
 }
-nav > .root-nav li {
-  color: white;
-  display: inline-block;
-  font: 14px/86px Arial, Georgia, sans-serif;
-  text-transform: uppercase;
-  float: left;
-  padding: 0 16px;
-  position: relative;
-  height: 86px;
+
+nav > ul > li {
   border-top: 5px solid transparent;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  color: white;
+  display: inline-block;
+  float: left;
+  font: 14px/86px Arial, Georgia, sans-serif;
+  height: 86px;
+  padding: 0 16px;
+  position: relative;
+  text-transform: uppercase;
 }
-nav > .root-nav li span {
-  position: absolute;
-  width: 5px;
+nav > ul > li span {
+  /* Arrow in the menu */
   height: 6px;
-  top: 30px;
   left: 50%;
+  position: absolute;
+  top: 30px;
+  width: 5px;
 }
-nav li:hover {
+
+nav > ul > li:hover {
   background-color: #232932;
   border-top: 5px solid #45b39e;
 }
-nav li:hover .sub-menu,
-nav li:hover .sub-menu li:hover .sub-sub-menu,
-nav li:hover .sub-sub-menu:hover {
+
+/* Display sub-menus */
+nav > ul > li:hover > .sub-menu,
+.sub-menu > li:hover > .sub-menu {
   display: block;
 }
-nav .sub-menu:hover {
-  height: auto;
-}
-nav .sub-menu,
-nav .sub-sub-menu {
+
+.sub-menu {
+  background-color: #323a45;
   display: none;
-  width: 150%;
+  left: 0;
   position: absolute;
   padding: 8px 9px 8px;
-  background-color: #323a45;
-  left: 0;
+  width: 150%;
 }
-nav .sub-menu li,
-nav .sub-sub-menu li {
+
+.sub-menu li {
   color: white;
-  float: none;
   display: block;
+  float: none;
   font: 12px/12px Arial, Georgia, sans-serif;
+  height: 12px;
   padding: 14px 5px 13px;
   text-transform: capitalize;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  height: 44px;
 }
-nav .sub-menu li:first-child,
-nav .sub-menu li:nth-child(2) {
+
+.sub-menu li:first-child,
+.sub-menu li:nth-child(2) {
   border-bottom: #232932 solid 1px;
 }
-nav .sub-menu li:hover {
+
+.sub-menu li:hover {
   background-color: #45b39e;
 }
-nav .sub-sub-menu,
-nav .sub-sub-menu:hover {
-  position: relative;
+
+.sub-menu .sub-menu,
+.sub-menu .sub-menu:hover {
   left: 115%;
+  position: relative;
   top: -200%;
 }
+
+/* Sub-menus END */
+/* Navigation END*/
+/* Header END */
 
 /*# sourceMappingURL=style.css.map */

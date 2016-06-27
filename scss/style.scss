@@ -1,3 +1,5 @@
+//TODO: flexible menu
+
 @import url(//fonts.googleapis.com/css?family=Roboto+Condensed);
 
 //colors palette
@@ -43,85 +45,85 @@ header {
 .logo a:visited span {
   color: $green-color;
 }
+/* Logotype END */
 
 /* Navigation */
 nav {
   display: inline-block;
   float: right;
-  > .root-nav li {
-    color: $white;
-    display: inline-block;
-    font: 14px/86px Arial, Georgia, sans-serif;
-    text-transform: uppercase;
-    float: left;
-    padding: 0 16px;
-    position: relative;
-    height: 86px;
-    border-top: 5px solid transparent;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    span {
-      position: absolute;
-      width: 5px;
-      height: 6px;
-      top: 30px;
-      left: 50%;
-    }
-  }
+}
 
-  li:hover {
-    background-color: $dark-color;
-    border-top: 5px solid $green-color;
-    .sub-menu,
-    .sub-menu li:hover .sub-sub-menu,
-    .sub-sub-menu:hover {
-      display: block;
-    }
-  }
+nav > ul > li {
+  border-top: 5px solid transparent;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  color: $white;
+  display: inline-block;
+  float: left;
+  font: 14px/86px Arial, Georgia, sans-serif;
+  height: 86px;
+  padding: 0 16px;
+  position: relative;
+  text-transform: uppercase;
 
-  .sub-menu:hover {
-    height: auto;
-  }
-
-  .sub-menu,
-  .sub-sub-menu { //hide sub-menu
-    display: none;
-    width: 150%;
+  span { /* Arrow in the menu */
+    height: 6px;
+    left: 50%;
     position: absolute;
-    padding: 8px 9px 8px;
-    background-color: $bg-grey-color;
-    left: 0;
-  }
-
-  .sub-menu li,
-  .sub-sub-menu li {
-    color: $white;
-    float: none;
-    display: block;
-    font: 12px/12px Arial, Georgia, sans-serif;
-    padding: 14px 5px 13px;
-    text-transform: capitalize;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    height: 44px;
-    //line-height: 1em;
-  }
-
-  .sub-menu li:first-child,
-  .sub-menu li:nth-child(2) {
-    border-bottom: $dark-color solid 1px;
-  }
-
-  .sub-menu li:hover {
-    background-color: $green-color;
-  }
-
-  .sub-sub-menu,
-  .sub-sub-menu:hover {
-    position: relative;
-    left: 115%;
-    top: -200%;
+    top: 30px;
+    width: 5px;
   }
 }
+
+nav > ul > li:hover {
+  background-color: $dark-color;
+  border-top: 5px solid $green-color;
+}
+
+/* Display sub-menus */
+nav > ul > li:hover > .sub-menu,
+.sub-menu > li:hover > .sub-menu {
+  display: block;
+}
+
+.sub-menu {
+  background-color: $bg-grey-color;
+  display: none;
+  left: 0;
+  position: absolute;
+  padding: 8px 9px 8px;
+  width: 150%;
+}
+
+.sub-menu li {
+  color: $white;
+  display: block;
+  float: none;
+  font: 12px/12px Arial, Georgia, sans-serif;
+  height: 12px;
+  padding: 14px 5px 13px;
+  text-transform: capitalize;
+}
+
+.sub-menu li:first-child,
+.sub-menu li:nth-child(2) {
+  border-bottom: $dark-color solid 1px;
+}
+
+.sub-menu li:hover {
+  background-color: $green-color;
+}
+
+.sub-menu .sub-menu,
+.sub-menu .sub-menu:hover {
+  left: 115%;
+  position: relative;
+  //left: -200%;
+  top: -200%;
+}
+/* Sub-menus END */
+
+/* Navigation END*/
+
+/* Header END */
