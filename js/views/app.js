@@ -1,61 +1,67 @@
 /**
  * Created by bubble on 25.07.16.
  */
-var app = app || {};
 
-app.AppView = Backbone.View.extend({
-    el: '#library-app',
-    initialize: function(){
-        this.$input = this.$('#new-item');
-        this.$newTitle = this.$('#new-item #title');
-        this.$newAuthor = this.$('#new-item #author');
-        this.$newDescr = this.$('#new-item #description');
-        this.$list = this.$('#all-item');
-        this.listenTo(app.ItemList, 'add', this.addOne);
-        this.listenTo(app.ItemList, 'reset', this.addAll);
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'collections/items',
+    'views/item',
+    'common'
+], function ($, _, Backbone, ItemList, ItemView, Common) {
+   var AppView =  Backbone.View.extend({
+       el: '#library-app',
+       initialize: function(){
+           this.$input = this.$('#new-item');
+           this.$newTitle = this.$('#new-item #title');
+           this.$newAuthor = this.$('#new-item #author');
+           this.$newDescr = this.$('#new-item #description');
+           this.$list = this.$('#all-item');
+           this.listenTo(ItemList, 'add', this.addOne);
+           this.listenTo(ItemList, 'reset', this.addAll);
 
-        this.listenTo(app.ItemList, 'filter', this.filterAll);
+           this.listenTo(ItemList, 'filter', this.filterAll);
 
-        app.ItemList.fetch({reset: true});
-
-        // app.ItemList.fetch({reset: true});
-    },
-    events: {
-        'keypress #new-item': 'createOnEnter'
-    },
-    filterAll: function () {
-        app.ItemList.each(this.filterOne, this);
-    },
-    filterOne: function (item) {
-        item.trigger('visible');
-    },
-    addOne: function(item){
-        var view = new app.ItemView({model: item});
-        this.$list.append(view.render().el);
-    },
-    addAll: function(){
-        this.$list.html('');
-        app.ItemList.each(this.addOne, this);
-    },
-    newAttributes: function() {
-        return {
-            title: this.$newTitle.val().trim(),
-            author: this.$newAuthor.val().trim(),
-            description: this.$newDescr.val().trim(),
-            liked: false
-        };
-    },
-    clearForm: function(form){
-        form.find('input[type=\'text\']').each(function(i, item){
-            $(item).val('');
-        });
-    },
-    createOnEnter: function (event) {
-        if ( event.which !== ENTER_KEY) {
-            return;
-        }
-        app.ItemList.create(this.newAttributes());
-        this.clearForm(this.$input);
-    }
-
+           ItemList.fetch({reset: true});
+       },
+       events: {
+           'keypress #new-item': 'createOnEnter'
+       },
+       filterAll: function () {
+           ItemList.each(this.filterOne, this);
+       },
+       filterOne: function (item) {
+           item.trigger('visible');
+       },
+       addOne: function(item){
+           var view = new ItemView({model: item});
+           this.$list.append(view.render().el);
+       },
+       addAll: function(){
+           this.$list.html('');
+           ItemList.each(this.addOne, this);
+       },
+       newAttributes: function() {
+           return {
+               title: this.$newTitle.val().trim(),
+               author: this.$newAuthor.val().trim(),
+               description: this.$newDescr.val().trim(),
+               liked: false
+           };
+       },
+       clearForm: function(form){
+           form.find('input[type=\'text\']').each(function(i, item){
+               $(item).val('');
+           });
+       },
+       createOnEnter: function (event) {
+           if ( event.which !== Common.ENTER_KEY) {
+               return;
+           }
+           ItemList.create(this.newAttributes());
+           this.clearForm(this.$input);
+       }
+   });
+    return AppView;
 });

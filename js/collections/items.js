@@ -1,17 +1,22 @@
 /**
  * Created by bubble on 25.07.16.
  */
-var app = app || {};
+// var app = app || {};
 
-var ItemList = Backbone.Collection.extend({
-   model: app.Item,
-    localStorage: new Backbone.LocalStorage('library-backbone'),
-    // localStorage: localStorage,
-    liked: function(){
-        return this.filter(function(item){
-            return item.liked;
+define([
+    'underscore',
+    'backbone',
+    'backboneLocalstorage',
+    'models/item'
+], function (_, Backbone, Store, Item) {
+        var ItemList = Backbone.Collection.extend({
+            model: Item,
+            localStorage: new Store('library-backbone'),
+            liked: function(){
+                return this.filter(function(item){
+                    return item.liked;
+                });
+            }
         });
-    }
+        return new ItemList();
 });
-
-app.ItemList = new ItemList();

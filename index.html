@@ -91,6 +91,11 @@
 </div>
 
 <section id="library-app">
+    <div class="nav_library_app">
+        <a href="#/all">All</a>
+        <a href="#/liked">Liked</a>
+        <a href="#/unliked">Unliked</a>
+    </div>
     <div id="new-item">
         <figure class="view-item">
             <a href="#" class="magnifier2">
@@ -122,6 +127,9 @@
                                     <button class="zoom_like-bttn">Like</button>
                                     <span class="zoom_like-count"><%-countLikes %></span>
                                 </span>
+                                <span>
+                                    <button class="delete-item">Delete</button>
+                                    </span>
                             </span>
         <!--</a>-->
     </figure>
@@ -153,16 +161,17 @@
 <!--<div class="priv-footer"></div>-->
 <!--</footer>-->
 
-<script src="js/libs/jquery-3.1.0.js"></script>
-<script src="js/libs/underscore.js"></script>
-<script src="js/libs/backbone.js"></script>
-<script src="js/libs/backbone.localStorage.js"></script>
-<script src="js/models/item.js"></script>
-<script src="js/collections/items.js"></script>
-<script src="js/views/item.js"></script>
-<script src="js/views/app.js"></script>
-<script src="js/routers/router.js"></script>
-<script src="js/app.js"></script>
+<!--<script src="js/libs/jquery-3.1.0.js"></script>-->
+<!--<script src="js/libs/underscore.js"></script>-->
+<!--<script src="js/libs/backbone.js"></script>-->
+<!--<script src="js/libs/backbone.localStorage.js"></script>-->
+<!--<script src="js/models/item.js"></script>-->
+<!--<script src="js/collections/items.js"></script>-->
+<!--<script src="js/views/item.js"></script>-->
+<!--<script src="js/views/app.js"></script>-->
+<!--<script src="js/routers/router.js"></script>-->
+<!--<script src="js/app.js"></script>-->
 
+<script data-main="js/main.js" src="js/require.js"></script>
 </body>
 </html>
