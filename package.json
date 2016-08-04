@@ -1,0 +1,32 @@
+{
+  "name": "library",
+  "private": true,
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "backbone.localstorage": "^1.1.16",
+    "jquery": "^2.1.3",
+    "underscore": "^1.7.0",
+    "requirejs": "^2.1.15"
+  },
+  "devDependencies": {
+    "node-sass": "^3.8.0",
+    "nodemon": "^1.10.0"
+  },
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kastrulya/Library_EPAM.git"
+  },
+  "author": "Yulia Hruhorieva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kastrulya/Library_EPAM/issues"
+  },
+  "homepage": "https://github.com/kastrulya/Library_EPAM#readme",
+  "description": ""
+}

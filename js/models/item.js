@@ -11,6 +11,7 @@ define([
             title : '',
             description: '',
             author: '',
+            filePath: '',
             liked: false,
             countLikes: 0
         },

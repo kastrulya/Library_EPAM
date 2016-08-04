@@ -11,7 +11,8 @@ define([
 ], function (_, Backbone, Store, Item) {
         var ItemList = Backbone.Collection.extend({
             model: Item,
-            localStorage: new Store('library-backbone'),
+            url: 'http://api.backendless.com/v1/data/items',
+            // localStorage: new Store('library-backbone'),
             liked: function(){
                 return this.filter(function(item){
                     return item.liked;

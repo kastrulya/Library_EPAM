@@ -17,6 +17,7 @@ define([
            this.$newTitle = this.$('#new-item #title');
            this.$newAuthor = this.$('#new-item #author');
            this.$newDescr = this.$('#new-item #description');
+           this.$newPath = this.$('#new-item #new-file');
            this.$list = this.$('#all-item');
            this.listenTo(ItemList, 'add', this.addOne);
            this.listenTo(ItemList, 'reset', this.addAll);
@@ -47,6 +48,7 @@ define([
                title: this.$newTitle.val().trim(),
                author: this.$newAuthor.val().trim(),
                description: this.$newDescr.val().trim(),
+               filePath: this.$newPath.val(),
                liked: false
            };
        },

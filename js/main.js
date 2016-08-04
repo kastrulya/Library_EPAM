@@ -3,6 +3,8 @@
 
 // Require.js allows us to configure shortcut alias
 require.config({
+    baseUrl: 'js',
+
     // The shim config allows us to configure dependencies for
     // scripts that do not call define() to register a module
     shim: {
@@ -11,21 +13,23 @@ require.config({
         },
         backbone: {
             deps: [
+                //These script dependencies should be loaded before loading
                 'underscore',
                 'jquery'
             ],
             exports: 'Backbone'
         },
         backboneLocalstorage: {
+            //These script dependencies should be loaded before loading
             deps: ['backbone'],
             exports: 'Store'
         }
     },
     paths: {
-        jquery: 'libs/jquery-3.1.0',
-        underscore: 'libs/underscore',
-        backbone: 'libs/backbone',
-        backboneLocalstorage: 'libs/backbone.localStorage'
+        jquery: '../node_modules/jquery/dist/jquery',
+        underscore: '../node_modules/underscore/underscore',
+        backbone: '../node_modules/backbone/backbone',
+        backboneLocalstorage: '../node_modules/backbone.localstorage/backbone.localStorage'
     }
 });
 
