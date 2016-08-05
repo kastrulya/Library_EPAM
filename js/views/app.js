@@ -7,9 +7,11 @@ define([
     'underscore',
     'backbone',
     'collections/items',
+    'collections/searchable',
     'views/item',
-    'common'
-], function ($, _, Backbone, ItemList, ItemView, Common) {
+    'common',
+    'persistence/backendless'
+], function ($, _, Backbone, ItemList, Searchable, ItemView, Common, Backendless) {
    var AppView =  Backbone.View.extend({
        el: '#library-app',
        initialize: function(){
@@ -19,15 +21,32 @@ define([
            this.$newDescr = this.$('#new-item #description');
            this.$newPath = this.$('#new-item #new-file');
            this.$list = this.$('#all-item');
+           this.$search = this.$('#search_library-app');
            this.listenTo(ItemList, 'add', this.addOne);
            this.listenTo(ItemList, 'reset', this.addAll);
 
            this.listenTo(ItemList, 'filter', this.filterAll);
-
-           ItemList.fetch({reset: true});
+           
+           ItemList.fetch();
        },
        events: {
-           'keypress #new-item': 'createOnEnter'
+           'keypress #new-item': 'createOnEnter',
+           'click #search-bttn': 'searchItem',
+           'keypress #search-field': 'searchOnEnter'
+       },
+
+       searchOnEnter: function(event){
+           if ( event.which !== Common.ENTER_KEY) {
+               return;
+           }
+           this.searchItem();
+       },
+       searchItem: function () {
+           var query = this.$search.find('input').val().trim();
+           var searchItemys = Searchable.extend({
+               url: ItemList.url
+           });
+           searchItems.search(query);
        },
        filterAll: function () {
            ItemList.each(this.filterOne, this);

@@ -11,10 +11,10 @@ define([
             title : '',
             description: '',
             author: '',
-            filePath: '',
             liked: false,
             countLikes: 0
         },
+        idAttribute: "objectId",
         toggleLike: function(){
             var currState = this.get('liked');
             var likeAffect = currState? -1 : 1;

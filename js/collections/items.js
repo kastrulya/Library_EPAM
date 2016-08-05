@@ -6,13 +6,15 @@
 define([
     'underscore',
     'backbone',
-    'backboneLocalstorage',
     'models/item'
-], function (_, Backbone, Store, Item) {
+], function (_, Backbone, Item) {
         var ItemList = Backbone.Collection.extend({
             model: Item,
             url: 'http://api.backendless.com/v1/data/items',
             // localStorage: new Store('library-backbone'),
+            parse: function (responce) {
+                return responce.data;
+            },
             liked: function(){
                 return this.filter(function(item){
                     return item.liked;
