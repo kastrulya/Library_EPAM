@@ -6,9 +6,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'common',
-    'persistence/backendless'
-], function ($, _, Backbone, Common, Backendless) {
+    'common'
+], function ($, _, Backbone, Common) {
     var ItemView = Backbone.View.extend({
         tagName: 'li',
         template: _.template( $('#item-template').html() ),

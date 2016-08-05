@@ -9,9 +9,8 @@ define([
     'collections/items',
     'collections/searchable',
     'views/item',
-    'common',
-    'persistence/backendless'
-], function ($, _, Backbone, ItemList, Searchable, ItemView, Common, Backendless) {
+    'common'
+], function ($, _, Backbone, ItemList, Searchable, ItemView, Common) {
    var AppView =  Backbone.View.extend({
        el: '#library-app',
        initialize: function(){
