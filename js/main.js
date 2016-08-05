@@ -34,15 +34,19 @@ require.config({
 });
 
 require([
+    'jquery',
     'backbone',
     'views/app',
-    'routers/router'
-], function (Backbone, AppView, Workspace) {
+    'routers/router',
+    'persistence/backendless'
+], function ($, Backbone, AppView, Workspace, Backendless) {
     /*jshint nonew:false*/
     // Initialize routing and start Backbone.history()
     new Workspace();
     Backbone.history.start();
 
+    Backendless.config();
     // Initialize the application view
     new AppView();
+
 });
