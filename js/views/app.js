@@ -7,10 +7,9 @@ define([
     'underscore',
     'backbone',
     'collections/items',
-    'collections/searchable',
     'views/item',
     'common'
-], function ($, _, Backbone, ItemList, Searchable, ItemView, Common) {
+], function ($, _, Backbone, ItemList, ItemView, Common) {
    var AppView =  Backbone.View.extend({
        el: '#library-app',
        initialize: function(){
@@ -25,7 +24,7 @@ define([
            this.listenTo(ItemList, 'reset', this.addAll);
 
            this.listenTo(ItemList, 'filter', this.filterAll);
-           
+
            ItemList.fetch();
        },
        events: {
@@ -42,10 +41,13 @@ define([
        },
        searchItem: function () {
            var query = this.$search.find('input').val().trim();
-           var searchItemys = Searchable.extend({
-               url: ItemList.url
-           });
-           searchItems.search(query);
+           // var searchItems = Searchable.extend({
+           //     url: ItemList.url
+           // });
+           ItemList.search(query)
+               .done(_.bind(function(){
+                   ItemList.trigger('reset');
+               }));
        },
        filterAll: function () {
            ItemList.each(this.filterOne, this);
@@ -79,7 +81,7 @@ define([
            if ( event.which !== Common.ENTER_KEY) {
                return;
            }
-           ItemList.create(this.newAttributes());
+          ItemList.create(this.newAttributes());
            this.clearForm(this.$input);
        }
    });
