@@ -91,19 +91,23 @@
 </div>
 
 <section id="library-app">
-    <div id="search_library-app">
-        <input type="text" placeholder="Type to search" id="search-field">
-        <button id="search-bttn"></button>
+    <div class="search-block">
+        <div class="search_library-app">
+            <input type="text" placeholder="Type to search" id="search-field">
+            <button id="search-bttn">Find it!</button>
+        </div>
     </div>
-    <div class="nav_library_app">
+
+    <div class="filtering_library_app">
         <a href="#/all">All</a>
         <a href="#/liked">Liked</a>
         <a href="#/unliked">Unliked</a>
     </div>
-    <div id="new-item">
-        <figure class="view-item">
-            <a href="#" class="magnifier2">
-                <img src="images/page1_pic1.jpg" alt="">
+    <div class="all-items">
+        <div id="new-item">
+            <figure class="view-item">
+                <a href="#" class="magnifier2">
+                    <img src="images/placeholder.png" alt="">
                             <span class="zoom">
                                 <input type="text" class="zoom_txt1" id="title" placeholder="Title">
                                 <input type="text" class="zoom_txt2" id="author" placeholder="Author">
@@ -111,18 +115,20 @@
                                 <input type="file" id="new-file"><br>
                                 <input type="submit" id="new-item-subm" value="Share">
                             </span>
-            </a>
-        </figure>
+                </a>
+            </figure>
+        </div>
+        <div id="main">
+            <ul id="all-item"></ul>
+        </div>
     </div>
-    <div id="main">
-        <ul id="all-item"></ul>
-    </div>
+
 </section>
 
 <script type="text/template" id="item-template">
     <figure class="view-item">
         <!--<a href="#" class="magnifier2">-->
-            <img src="images/page1_pic1.jpg" alt="">
+            <img src="images/placeholder.png" alt="">
                             <span class="zoom">
                                 <span class="zoom_txt1"><%-title %></span>
                                 <span class="zoom_txt2"><%-author %></span>

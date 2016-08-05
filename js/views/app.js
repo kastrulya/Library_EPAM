@@ -19,7 +19,7 @@ define([
            this.$newDescr = this.$('#new-item #description');
            this.$newPath = this.$('#new-item #new-file');
            this.$list = this.$('#all-item');
-           this.$search = this.$('#search_library-app');
+           this.$search = this.$('.search_library-app');
            this.listenTo(ItemList, 'add', this.addOne);
            this.listenTo(ItemList, 'reset', this.addAll);
 
