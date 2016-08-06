@@ -6,14 +6,25 @@ define([
     'jquery',
     'backbone',
     'collections/items',
-    'common'
-], function ($, Backbone, ItemList, Common) {
+    'common',
+    'views/listItems',
+    'text!../../templates/HeaderView.html'
+], function ($, Backbone, ItemList, Common, ListItemsView, headerTemplate) {
     var LibraryRouters = Backbone.Router.extend({
         routes: {
+            "": "home",
             "about": "showAbout",
             "item/:id": "getItem",
             "search/:query": "searchItem",
             "*filter": "setFilter"
+        },
+        initialize: function () {
+            $('.header').html(headerTemplate);
+        },
+        home: function(){
+            this.listItemView = new ListItemsView();
+            this.listItemView.render();
+            console.log('home');
         },
         showAbout: function () {
             console.log('about');

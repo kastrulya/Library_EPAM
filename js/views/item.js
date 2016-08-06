@@ -6,11 +6,12 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'common'
-], function ($, _, Backbone, Common) {
+    'common',
+    'text!../../templates/ItemView.html'
+], function ($, _, Backbone, Common, template) {
     var ItemView = Backbone.View.extend({
         tagName: 'li',
-        template: _.template( $('#item-template').html() ),
+        template: _.template(template),
         initialize: function () {
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model, 'visible', this.toggleVisible);

@@ -29,7 +29,8 @@ require.config({
         jquery: '../node_modules/jquery/dist/jquery',
         underscore: '../node_modules/underscore/underscore',
         backbone: '../node_modules/backbone/backbone',
-        backboneLocalstorage: '../node_modules/backbone.localstorage/backbone.localStorage'
+        backboneLocalstorage: '../node_modules/backbone.localstorage/backbone.localStorage',
+        text: '../node_modules/text/text'
     }
 });
 
@@ -38,15 +39,12 @@ require([
     'backbone',
     'views/app',
     'routers/router',
-    'persistence/backendless'
-], function ($, Backbone, AppView, Workspace, Backendless) {
+    'persistence/backendless',
+    'utils'
+], function ($, Backbone, AppView, LibraryRouters, Backendless, templateLoader) {
     /*jshint nonew:false*/
     // Initialize routing and start Backbone.history()
-    new Workspace();
+    new LibraryRouters();
     Backbone.history.start();
-
     Backendless.config();
-    // Initialize the application view
-    new AppView();
-
 });

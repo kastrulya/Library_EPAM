@@ -6,38 +6,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-    <div class="header-row">
-        <div class="logo">
-            <h1>
-                <a href="#">
-                    public<span>library</span>
-                </a>
-            </h1>
-        </div>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Catalog<span>🠇</span>
-                    <ul class="sub-menu">
-                        <li>Graphic Books</li>
-                        <li>Audio books</li>
-                        <li>Videos 🠆
-                            <ul class="sub-menu">
-                                <li>Promo</li>
-                                <li>Short films</li>
-                                <li>Feature Films</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>Join</li>
-                <li>Contacts</li>
-            </ul>
-        </nav>
-    </div>
-</header>
 
+<div class="header"></div>
 <div class="slider">
     <div class="slide">
         <div style="background-image: url('images/share.jpg')"></div>
@@ -89,62 +59,8 @@
         </p>
     </div>
 </div>
+<section id="list-item"></section>
 
-<section id="library-app">
-    <div class="search-block">
-        <div class="search_library-app">
-            <input type="text" placeholder="Type to search" id="search-field">
-            <button id="search-bttn">Find it!</button>
-        </div>
-    </div>
-
-    <div class="filtering_library_app">
-        <a href="#/all">All</a>
-        <a href="#/liked">Liked</a>
-        <a href="#/unliked">Unliked</a>
-    </div>
-    <div class="all-items">
-        <div id="new-item">
-            <figure class="view-item">
-                <a href="#" class="magnifier2">
-                    <img src="images/placeholder.png" alt="">
-                            <span class="zoom">
-                                <input type="text" class="zoom_txt1" id="title" placeholder="Title">
-                                <input type="text" class="zoom_txt2" id="author" placeholder="Author">
-                                <input type="text" class="zoom_link" id="description" placeholder="Description">
-                                <input type="file" id="new-file"><br>
-                                <input type="submit" id="new-item-subm" value="Share">
-                            </span>
-                </a>
-            </figure>
-        </div>
-        <div id="main">
-            <ul id="all-item"></ul>
-        </div>
-    </div>
-
-</section>
-
-<script type="text/template" id="item-template">
-    <figure class="view-item">
-        <!--<a href="#" class="magnifier2">-->
-            <img src="images/placeholder.png" alt="">
-                            <span class="zoom">
-                                <span class="zoom_txt1"><%-title %></span>
-                                <span class="zoom_txt2"><%-author %></span>
-                                <span class="zoom_link">Learn More</span>
-                                <span class="zoom_like">
-                                    <button class="zoom_like-bttn">Like</button>
-                                    <span class="zoom_like-count"><%-countLikes %></span>
-                                </span>
-                                <span>
-                                    <button class="delete-item">Delete</button>
-                                    </span>
-                            </span>
-        <!--</a>-->
-    </figure>
-
-</script>
 
 <!--<div class="slider">-->
 
