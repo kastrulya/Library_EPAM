@@ -11,28 +11,31 @@ define([
     'views/listItems',
     'views/newItem',
     'views/fullItem',
+    'views/contacts',
     'text!../../templates/HeaderView.html'
-], function ($, Backbone, ItemList, Common, Item, ListItemsView, NewItemView, FullItemView, headerTemplate) {
+], function ($, Backbone, ItemList, Common, Item, ListItemsView, NewItemView, FullItemView, ContactsView, headerTemplate) {
     var LibraryRouters = Backbone.Router.extend({
         $mainBlock: $('#library-app'),
         routes: {
             "": "home",
             "create": "createItem",
-            // "about": "showAbout",
+            "contacts": "showContacts",
             "item/:id": "getItem",
             "search/(:query)": "searchItem",
             "*filter": "setFilter"
         },
         initialize: function () {
             $('.header').html(headerTemplate);
-            // this.home();
         },
-        home: function(){
+        home: function () {
             var listItemView = new ListItemsView();
             this.renderPage(listItemView);
         },
-        showAbout: function () {
-            console.log('about');
+        showContacts: function () {
+            var contactsView = new ContactsView();
+            this.$mainBlock.html(contactsView.el);
+            contactsView.render();
+            // this.renderPage(contactsView);
         },
         getItem: function (id) {
             var self = this;
@@ -60,7 +63,7 @@ define([
             var newItemView = new NewItemView();
             this.renderPage(newItemView);
         },
-        renderPage: function(view){
+        renderPage: function (view) {
             view.render();
             this.$mainBlock.html(view.el);
         }

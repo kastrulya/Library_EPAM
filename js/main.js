@@ -30,7 +30,8 @@ require.config({
         underscore: '../node_modules/underscore/underscore',
         backbone: '../node_modules/backbone/backbone',
         backboneLocalstorage: '../node_modules/backbone.localstorage/backbone.localStorage',
-        text: '../node_modules/text/text'
+        text: '../node_modules/text/text',
+        leaflet: '../node_modules/leaflet/dist/leaflet'
     }
 });
 

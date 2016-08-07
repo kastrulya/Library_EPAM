@@ -1,6 +1,3 @@
-/**
- * Created by bubble on 07.08.16.
- */
 define([
     'jquery',
     'underscore',
