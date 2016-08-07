@@ -25,7 +25,7 @@ define([
         },
         initialize: function () {
             $('.header').html(headerTemplate);
-            this.home();
+            // this.home();
         },
         home: function(){
             var listItemView = new ListItemsView();
