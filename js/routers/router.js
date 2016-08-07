@@ -11,21 +11,23 @@ define([
     'text!../../templates/HeaderView.html'
 ], function ($, Backbone, ItemList, Common, ListItemsView, headerTemplate) {
     var LibraryRouters = Backbone.Router.extend({
+        $mainBlock: $('#library-app'),
         routes: {
             "": "home",
-            "about": "showAbout",
-            "item/:id": "getItem",
+            // "about": "showAbout",
+            // "item/:id": "getItem",
             "search/(:query)": "searchItem",
-            "*filter": "setFilter"
+            "*filter": "setFilter",
+            "create": "createItem"
         },
         initialize: function () {
             $('.header').html(headerTemplate);
             this.home();
         },
         home: function(){
-            this.listItemView = new ListItemsView();
-            this.listItemView.render();
-            console.log('home');
+            var listItemView = new ListItemsView();
+            listItemView.render();
+            this.$mainBlock.html(listItemView.el);
         },
         showAbout: function () {
             console.log('about');
@@ -40,10 +42,12 @@ define([
             console.log(query);
         },
         setFilter: function (param) {
-            console.log('filter');
             var param = (param || '').trim();
             Common.libraryFilter = param;
             ItemList.trigger('filter');
+        },
+        createItem: function () {
+
         }
     });
     return LibraryRouters;

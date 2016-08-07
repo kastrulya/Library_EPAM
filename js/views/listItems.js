@@ -8,11 +8,9 @@ define([
     'collections/items',
     'views/item',
     'common',
-    'routers/router',
     'text!../../templates/ItemListView.html'
-], function ($, _, Backbone, ItemList, ItemView, Common, router, itemListTemplate) {
+], function ($, _, Backbone, ItemList, ItemView, Common, itemListTemplate) {
     var ListItemsView = Backbone.View.extend({
-        el: '#list-item',
         template: itemListTemplate,
         initialize: function(){
             this.listenTo(ItemList, 'add', this.addOne);

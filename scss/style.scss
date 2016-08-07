@@ -54,6 +54,13 @@ header {
 nav {
   display: inline-block;
   float: right;
+  a{
+    color: $white;
+    text-decoration: none;
+  }
+  a:visited {
+    color: $white;
+  }
 }
 
 nav > ul > li {
