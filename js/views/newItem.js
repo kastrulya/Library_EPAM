@@ -8,13 +8,13 @@ define([
     'common',
     'collections/items',
     'text!../../templates/NewItemView.html'
-], function($, _, Backbone, Common, ItemList, newItemTemplate){
+], function ($, _, Backbone, Common, ItemList, newItemTemplate) {
     var NewItemView = Backbone.View.extend({
         template: newItemTemplate,
         // initialize: function(){
         //     ItemList.fetch();
         // },
-        render: function(){
+        render: function () {
             $(this.el).html(this.template);
             this.$input = this.$('#new-item');
             this.$newTitle = this.$('#new-item #title');
@@ -24,9 +24,10 @@ define([
             return this;
         },
         events: {
+            'click #new-item-subm': "create",
             'keypress #new-item': 'createOnEnter'
         },
-        newAttributes: function() {
+        newAttributes: function () {
             return {
                 title: this.$newTitle.val().trim(),
                 author: this.$newAuthor.val().trim(),
@@ -35,17 +36,21 @@ define([
                 liked: false
             };
         },
-        clearForm: function(form){
-            form.find('input[type=\'text\']').each(function(i, item){
+        clearForm: function (form) {
+            form.find('input[type=\'text\']').each(function (i, item) {
                 $(item).val('');
             });
         },
-        createOnEnter: function (event) {
-            if ( event.which !== Common.ENTER_KEY) {
-                return;
-            }
+        create: function () {
             ItemList.create(this.newAttributes());
             this.clearForm(this.$input);
+            Backbone.history.navigate('#', true);
+        },
+        createOnEnter: function (event) {
+            if (event.which !== Common.ENTER_KEY) {
+                return;
+            }
+            this.create();
         }
     });
     return NewItemView;
