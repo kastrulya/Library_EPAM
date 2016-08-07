@@ -2,3 +2,5 @@
 /css
 /js/libs
 /node_modules
+*.iml
+*.log
