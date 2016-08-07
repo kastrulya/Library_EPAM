@@ -43,8 +43,8 @@ require([
     'utils'
 ], function ($, Backbone, AppView, LibraryRouters, Backendless, templateLoader) {
     /*jshint nonew:false*/
+    Backendless.config();
     // Initialize routing and start Backbone.history()
     new LibraryRouters();
     Backbone.history.start();
-    Backendless.config();
 });

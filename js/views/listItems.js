@@ -8,17 +8,17 @@ define([
     'collections/items',
     'views/item',
     'common',
+    'routers/router',
     'text!../../templates/ItemListView.html'
-], function ($, _, Backbone, ItemList, ItemView, Common, itemListTemplate) {
+], function ($, _, Backbone, ItemList, ItemView, Common, router, itemListTemplate) {
     var ListItemsView = Backbone.View.extend({
         el: '#list-item',
         template: itemListTemplate,
         initialize: function(){
-            this.$list = this.$('#all-item');
-            this.$search = this.$('.search_library-app');
             this.listenTo(ItemList, 'add', this.addOne);
             this.listenTo(ItemList, 'reset', this.addAll);
             this.listenTo(ItemList, 'filter', this.filterAll);
+            this.listenTo(ItemList, 'search', this.filterSearch.bind(this, Common.searchQuery));
 
             ItemList.fetch();
         },
@@ -27,7 +27,9 @@ define([
             'keypress #search-field': 'searchOnEnter'
         },
         render: function(){
-            $(this.el).html(this.template());
+            $(this.el).html(this.template);
+            this.$list = this.$('#all-item');
+            this.$search = this.$('.search_library-app');
             return this;
         },
         searchOnEnter: function(event){
@@ -38,7 +40,11 @@ define([
         },
         searchItem: function () {
             var query = this.$search.find('input').val().trim();
-            ItemList.search(query)
+            Backbone.history.navigate('search/' + query, true);
+            // filterSearch(query);
+        },
+        filterSearch: function() {
+            ItemList.search(Common.searchQuery)
                 .done(_.bind(function(){
                     ItemList.trigger('reset');
                 }));

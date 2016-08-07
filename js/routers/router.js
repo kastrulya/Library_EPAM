@@ -15,11 +15,12 @@ define([
             "": "home",
             "about": "showAbout",
             "item/:id": "getItem",
-            "search/:query": "searchItem",
+            "search/(:query)": "searchItem",
             "*filter": "setFilter"
         },
         initialize: function () {
             $('.header').html(headerTemplate);
+            this.home();
         },
         home: function(){
             this.listItemView = new ListItemsView();
@@ -33,6 +34,9 @@ define([
             console.log(id);
         },
         searchItem: function (query) {
+            var query = (query || '').trim();
+            Common.searchQuery = query;
+            ItemList.trigger('search');
             console.log(query);
         },
         setFilter: function (param) {
