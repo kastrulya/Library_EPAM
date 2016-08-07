@@ -9,11 +9,11 @@ define([
 ], function ($, _, Backbone, template) {
     var FullItemView = Backbone.View.extend({
         template: _.template(template),
-        initialize: function(){
+        initialize: function () {
             console.log('Full Item View: ' + this.model.title);
         },
-        render: function(){
-            $(this.el).html(this.template);
+        render: function () {
+            $(this.el).html(this.template(this.model.toJSON()));
             return this;
         }
     });
