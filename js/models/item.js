@@ -7,6 +7,7 @@ define([
     'backbone'
 ], function (_, Backbone) {
     var Item = Backbone.Model.extend({
+        urlRoot: 'http://api.backendless.com/v1/data/items',
         defaults: {
             title : '',
             description: '',

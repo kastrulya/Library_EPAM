@@ -37,11 +37,9 @@ require.config({
 require([
     'jquery',
     'backbone',
-    'views/app',
     'routers/router',
-    'persistence/backendless',
-    'utils'
-], function ($, Backbone, AppView, LibraryRouters, Backendless, templateLoader) {
+    'persistence/backendless'
+], function ($, Backbone, LibraryRouters, Backendless) {
     /*jshint nonew:false*/
     Backendless.config();
     // Initialize routing and start Backbone.history()
