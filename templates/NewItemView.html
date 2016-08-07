@@ -1,30 +1,28 @@
-<div id="new-item">
+<div id="new-item" class="col-md-6">
     <figure class="view-item">
-        <img src="/images/placeholder.png" alt="">
+        <!--<img src="images/placeholder.png" alt="">-->
         <form>
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="email" class="form-control" id="title" placeholder="Title">
+                <input type="text" class="form-control" id="title" placeholder="Title">
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
-                <input type="password" class="form-control" id="author" placeholder="Author">
+                <input type="text" class="form-control" id="author" placeholder="Author">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <input type="password" class="form-control" id="description" placeholder="Description">
+                <textarea class="form-control" id="description" placeholder="Description" rows="2"></textarea>
             </div>
-            <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Add file content here.</p>
+            <!--<div class="form-group">-->
+                <!--<label for="exampleInputFile">File input</label>-->
+                <!--<input type="file" id="exampleInputFile">-->
+
+                <!--<p class="help-block">Add file content here.</p>-->
+            <!--</div>-->
+            <div class="text-right">
+                <button type="submit" id="new-item-subm" class="btn btn-success">Share</button>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Check me out
-                </label>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
         </form>
     </figure>
 </div>
