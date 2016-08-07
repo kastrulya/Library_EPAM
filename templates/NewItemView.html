@@ -1,14 +1,30 @@
 <div id="new-item">
     <figure class="view-item">
-        <!--<a href="#" class="magnifier2">-->
-            <img src="images/placeholder.png" alt="">
-                            <span class="zoom">
-                                <input type="text" class="zoom_txt1" id="title" placeholder="Title">
-                                <input type="text" class="zoom_txt2" id="author" placeholder="Author">
-                                <input type="text" class="zoom_link" id="description" placeholder="Description">
-                                <input type="file" id="new-file"><br>
-                                <input type="submit" id="new-item-subm" value="Share">
-                            </span>
-        <!--</a>-->
+        <img src="/images/placeholder.png" alt="">
+        <form>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="email" class="form-control" id="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="password" class="form-control" id="author" placeholder="Author">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="password" class="form-control" id="description" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" id="exampleInputFile">
+                <p class="help-block">Add file content here.</p>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Check me out
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
     </figure>
 </div>
