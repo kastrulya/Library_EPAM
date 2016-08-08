@@ -18,23 +18,37 @@ define([
         $mainBlock: $('#library-app'),
         routes: {
             "": "home",
+            "#": "home",
             "create": "createItem",
             "contacts": "showContacts",
             "item/:id": "getItem",
             "search/(:query)": "searchItem",
-            "*filter": "setFilter"
+            "*filter": "setFilter",
+            default: "home"
         },
         initialize: function () {
             $('.header').html(headerTemplate);
         },
         home: function () {
-            var listItemView = new ListItemsView();
-            this.renderPage(listItemView);
+            if (!this.listItemView) {
+                this.listItemView = new ListItemsView();
+                this.listItemView.render();
+            } else {
+                this.listItemView.delegateEvents(); // delegate events when the view is recycled
+                this.listItemView.collectionItemView.forEach(item => item.delegateEvents());
+            }
+            this.$mainBlock.html(this.listItemView.el);
         },
         showContacts: function () {
-            var contactsView = new ContactsView();
-            this.$mainBlock.html(contactsView.el);
-            contactsView.render();
+            if (!this.contactsView) {
+                this.contactsView = new ContactsView();
+            }
+            this.$mainBlock.html(this.contactsView.el);
+            this.contactsView.render();
+
+            // var contactsView = new ContactsView();
+            // this.$mainBlock.html(contactsView.el);
+            // contactsView.render();
             // this.renderPage(contactsView);
         },
         getItem: function (id) {
@@ -42,8 +56,6 @@ define([
             var item = new Item({objectId: id});
             item.fetch({
                 success: function (data) {
-                    // Note that we could also 'recycle' the same instance of EmployeeFullView
-                    // instead of creating new instances
                     self.renderPage(new FullItemView({model: data}));
                 }
             });
@@ -60,6 +72,14 @@ define([
             ItemList.trigger('filter');
         },
         createItem: function () {
+            // if (!this.newItemView) {
+            //     this.newItemView = new NewItemView();
+            //     this.newItemView.render();
+            // } else {
+            //     this.newItemView.delegateEvents(); // delegate events when the view is recycled
+            // }
+            // this.$mainBlock.html(this.newItemView.el);
+
             var newItemView = new NewItemView();
             this.renderPage(newItemView);
         },

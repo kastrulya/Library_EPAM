@@ -1,10 +1,11 @@
 <figure class="view-item">
-    <a href="#item/<%=objectId %>" class="magnifier2">
     <img src="images/placeholder.png" alt="">
                             <span class="zoom">
                                 <span class="zoom_txt1"><%-title %></span>
                                 <span class="zoom_txt2"><%-author %></span>
-                                <span class="zoom_link">Learn More</span>
+                                <a href="#item/<%=objectId %>" class="magnifier2">
+                                    <span class="zoom_link">Learn More</span>
+                                </a>
                                 <span class="zoom_like">
                                     <button class="zoom_like-bttn">Like</button>
                                     <span class="zoom_like-count"><%-countLikes %></span>
@@ -13,5 +14,4 @@
                                     <button class="delete-item">Delete</button>
                                     </span>
                             </span>
-    </a>
 </figure>

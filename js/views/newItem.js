@@ -42,9 +42,18 @@ define([
             });
         },
         create: function () {
-            ItemList.create(this.newAttributes());
-            this.clearForm(this.$input);
-            Backbone.history.navigate('#', true);
+            var self = this;
+            ItemList.create(this.newAttributes(),
+                {
+                    wait: true,
+                    success: function(){
+                        self.clearForm(self.$input);
+                        // ItemList.trigger('add');
+                        Backbone.history.navigate('#', true);
+                    }
+                });
+            // this.clearForm(this.$input);
+            // Backbone.history.navigate('#', true);
         },
         createOnEnter: function (event) {
             if (event.which !== Common.ENTER_KEY) {

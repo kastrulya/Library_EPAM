@@ -17,7 +17,7 @@ define([
             this.listenTo(ItemList, 'reset', this.addAll);
             this.listenTo(ItemList, 'filter', this.filterAll);
             this.listenTo(ItemList, 'search', this.filterSearch.bind(this, Common.searchQuery));
-
+            this.collectionItemView = [];
             ItemList.fetch();
         },
         events: {
@@ -55,6 +55,7 @@ define([
         },
         addOne: function(item){
             var view = new ItemView({model: item});
+            this.collectionItemView.push(view);
             this.$list.append(view.render().el);
         },
         addAll: function(){

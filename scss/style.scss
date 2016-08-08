@@ -109,6 +109,9 @@ nav > ul > li:hover > .sub-menu,
 }
 
 .sub-menu li {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
   color: $white;
   display: block;
   float: none;
